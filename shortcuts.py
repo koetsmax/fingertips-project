@@ -22,9 +22,9 @@ class Shortcuts:
 
     def get_current_timestamp(self):
         """
-        Get the current timestamp in the format "dd-mm-yyyy hh:mm".
+        Get the current timestamp in the format "dd-mm-yy hh:mm".
         """
-        return datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+        return datetime.datetime.now().strftime("%d-%m-%y %H:%M")
 
     def get_signature_text(self):
         """
