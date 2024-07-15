@@ -22,11 +22,16 @@ class Main:
             self.keys = []
             return
         
+        modifier_keys = ["ctrl", "shift", "alt", "esc", "up", "down", "left", "right", "caps lock", "alt gr", "left windows", "delete"]
+        
         # Dont log the key if it is a modifier key
-        if event.name in ["ctrl", "shift", "alt", "tab", "esc", "up", "down", "left", "right", "caps lock", "alt gr", "left windows"]:
+        if event.name in modifier_keys:
             return
-        
-        
+
+        # check if any of the above keys are pressed when another key is pressed, example: ctrl + c. if a shortcut is pressed, do not add the modifier key to the list
+        if any(keyboard.is_pressed(mod) for mod in modifier_keys):
+            return
+
         if event.name == "space":
             #  The "shortcut" is all the keys pressed before the space
             shortcut = "".join(self.keys)
