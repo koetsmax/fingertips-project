@@ -18,7 +18,7 @@ class Main:
             return
         
         # Pressing these keys will clear the key list
-        if event.name in ["enter"]:
+        if event.name in ["enter", "tab"]:
             self.keys = []
             return
         
