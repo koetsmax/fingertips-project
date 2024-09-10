@@ -50,18 +50,18 @@ class Main:
             shortcut = "".join(self.keys)
             # Check if the shortcut is in the shortcut map
             if shortcut in self.shortcut_map:
-                # Get the long text from the shortcut map
-                long_text = self.shortcut_map[shortcut]
-                # If the long text is a function, call it, so we can dynamically add a timestamp or similar
-                if callable(long_text):
-                    long_text = long_text()
-
                 # Clear the shortcut itself and the space
                 for _ in range(len(shortcut) + 1):  # +1 to remove the space as well
                     keyboard.press_and_release("backspace")
 
                 # Short delay to ensure backspaces are processed before typing the long text
                 time.sleep(0.1)
+
+                # Get the long text from the shortcut map
+                long_text = self.shortcut_map[shortcut]
+                # If the long text is a function, call it, so we can dynamically add a timestamp or similar
+                if callable(long_text):
+                    long_text = long_text()
 
                 # Type the long text
                 keyboard.write(long_text + " ")
